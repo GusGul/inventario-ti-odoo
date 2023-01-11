@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="hr_inventory_ti_action" model="ir.actions.act_window">
+        <field name="name">Inventário de TI</field>
+        <field name="res_model">hr.inventory</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="hr_inventory_ti_root" name="Inventário TI" web_icon="inventario_ti,static/description/icon.png"/>
+    <menuitem id="hr_inventory_ti_menu" name="Inventário TI" parent="hr_inventory_ti_root"
+              action="hr_inventory_ti_action"/>
+
+    <record id="hr_inventory_ti_view_form" model="ir.ui.view">
+        <field name="name">Form Inventário TI</field>
+        <field name="model">hr.inventory</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="hr_id"/>
+                            <field name="department_id"/>
+                        </group>
+                        <group>
+                            <field name="ramal"/>
+                            <field name="ip"/>
+                            <field name="net_point"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Hardware">
+                            <group>
+                                <field name="sharing"/>
+                                <field name="laptop"/>
+                                <field name="monitor"/>
+                                <field name="tel_headset"/>
+                                <field name="kit_individual" widget="radio" options="{'horizontal': true}"/>
+                                <field name="kit"
+                                       attrs="{'invisible':['|', ('kit_individual','=','individual'), ('kit_individual','=',False)]}"/>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="keyboard"
+                                           attrs="{'invisible':['|', ('kit_individual','=','kit'), ('kit_individual','=',False)]}"/>
+                                </group>
+                                <group>
+                                    <field name="mouse"
+                                           attrs="{'invisible':['|', ('kit_individual','=','kit'), ('kit_individual','=',False)]}"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Software">
+                            <group>
+                                <field name="remote_access"/>
+                                <field name="office"/>
+                                <field name="comunication"/>
+                                <field name="hitec"/>
+                                <field name="mapped_folders"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hr_inventory_ti_view_tree" model="ir.ui.view">
+        <field name="name">Inventário TI</field>
+        <field name="model">hr.inventory</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="hr_id"/>
+                <field name="ip"/>
+                <field name="department_id"/>
+                <field name="ramal"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_inventory_ti_view_search" model="ir.ui.view">
+        <field name="name">Inventário TI</field>
+        <field name="model">hr.inventory</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="hr_id"/>
+                <field name="department_id"/>
+
+                <group string="Group By">
+                    <field name="department_id" string="Departamento" context="{'group_by':'department_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+</odoo>

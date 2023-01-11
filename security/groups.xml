@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="ti_inventory_category" model="ir.module.category" >
+        <field name="name">Inventário TI</field>
+        <field name="description">Acesso ao módulo Inventário de TI</field>
+        <field name="sequence">1</field>
+    </record>
+
+    <record id="ti_employee_group" model="res.groups">
+        <field name="name">Departamento TI</field>
+        <field name="category_id" ref="ti_inventory_category"/>
+        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+    </record>
+
+</odoo>

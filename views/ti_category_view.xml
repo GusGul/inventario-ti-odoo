@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="ti_category_action" model="ir.actions.act_window">
+        <field name="name">Categorias</field>
+        <field name="res_model">ti.category</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="ti_category_menu" name="Categorias" parent="inventario_ti.hr_inventory_ti_root"
+              action="ti_category_action"/>
+
+    <record id="ti_category_view_form" model="ir.ui.view">
+        <field name="name">Categorias</field>
+        <field name="model">ti.category</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="parent_id"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="child_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="ti_category_view_tree" model="ir.ui.view">
+        <field name="name">Categorias</field>
+        <field name="model">ti.category</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="parent_id"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+</odoo>

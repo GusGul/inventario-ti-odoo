@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="project_request_form_inv_ti_inherit" model="ir.ui.view">
+        <field name="name">Requisição</field>
+        <field name="model">project_request</field>
+        <field name="inherit_id" ref="project_requests.project_request_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Inventário TI" groups="inventario_ti.ti_employee_group"
+                      attrs="{'invisible':[('category_parent_request_id','not in',[1,2])]}">
+                    <group>
+                        <field name="inv_ti_id" readonly="1"/>
+                        <field name="sharing" attrs="{'invisible':[('category_child_request','!=',3)]}"/>
+                        <field name="laptop" attrs="{'invisible':[('category_child_request','!=',4)]}"/>
+                        <field name="monitor" attrs="{'invisible':[('category_child_request','!=',7)]}"/>
+                        <field name="kit" attrs="{'invisible':[('category_child_request','!=',5)]}"/>
+                        <field name="keyboard" attrs="{'invisible':[('category_child_request','!=',5)]}"/>
+                        <field name="mouse" attrs="{'invisible':[('category_child_request','!=',5)]}"/>
+                        <field name="tel_headset" attrs="{'invisible':[('category_child_request','!=',6)]}"/>
+                        <field name="remote_access" attrs="{'invisible':[('category_child_request','!=',9)]}"/>
+                        <field name="office" attrs="{'invisible':[('category_child_request','!=',8)]}"/>
+                        <field name="comunication" attrs="{'invisible':[('category_child_request','!=',10)]}"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

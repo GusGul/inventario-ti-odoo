@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_inventory_user,access.access_hr_inventory_user,model_hr_inventory,base.group_user,0,0,0,0
+access_hr_inventory_admin,access.access_hr_inventory_admin,model_hr_inventory,ti_employee_group,1,1,1,0
+access_ti_category_admin,access.access_ti_category_admin,model_ti_category,ti_employee_group,1,1,1,0

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="product_product_inherit_form_view" model="ir.ui.view">
+        <field name="name">Form do Produto</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="update_childs" string="Atualizar Dependentes" type="object"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Inventário TI">
+                    <field name="categ_parent_id" invisible="1"/>
+                    <field name="category" readonly="1"/>
+
+                    <group string="Em posse">
+                        <field name="laptop_func_id" readonly="1" attrs="{'invisible':[('category','not in',[13])]}"/>
+                        <field name="monitor_func_id" readonly="1" attrs="{'invisible':[('category','!=',3)]}"/>
+                        <field name="kit_func_id" readonly="1" attrs="{'invisible':[('category','!=',12)]}"/>
+                        <field name="keyboard_func_id" readonly="1" attrs="{'invisible':[('category','!=',7)]}"/>
+                        <field name="mouse_func_id" readonly="1" attrs="{'invisible':[('category','!=',8)]}"/>
+                        <field name="tel_headset_func_id" readonly="1" attrs="{'invisible':[('category','!=',5)]}"/>
+                        <field name="remote_access_func_id" readonly="1" attrs="{'invisible':[('category','!=',9)]}"/>
+                        <field name="office_func_id" readonly="1" attrs="{'invisible':[('category','!=',10)]}"/>
+                    </group>
+                    <group>
+                        <group string="Logística">
+                            <field name="notes"/>
+                            <field name="renew" string="Data de Vencimento"
+                                   attrs="{'invisible':[('categ_parent_id','=',1)]}"/>
+                            <field name="system"
+                                   attrs="{'invisible':[('category','!=',13)]}"/>
+                            <field name="processor"
+                                   attrs="{'invisible':[('category','!=',13)]}"/>
+                            <field name="memory"
+                                   attrs="{'invisible':[('category','!=',13)]}"/>
+                            <field name="memory_2"
+                                   attrs="{'invisible':[('memory','=',False)]}"/>
+                            <field name="storage"
+                                   attrs="{'invisible':[('category','!=',13)]}"/>
+                            <field name="keyboard"
+                                   attrs="{'invisible':[('category','!=',12)]}"/>
+                            <field name="mouse"
+                                   attrs="{'invisible':[('category','!=',12)]}"/>
+                        </group>
+                        <group string="Relações">
+                            <field name="parent_id"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="child_ids"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
